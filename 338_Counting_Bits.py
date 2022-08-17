@@ -51,3 +51,15 @@ class Solution:
                 count+=1
             result.append(count)
         return result
+
+  # Dynamic problem based solution
+  
+      def countBits(self, n: int) -> List[int]:
+        res = [0] * (n+1)
+        msb = 1
+        for i in range(1,n+1):
+            if msb * 2 == i:
+                msb = i
+            res[i] = 1 + res[i-msb]
+            
+        return res
